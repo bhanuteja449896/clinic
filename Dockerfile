@@ -1,29 +1,16 @@
-# Use Maven to build the application
-FROM maven:3.9.4-eclipse-temurin-21 as builder
+# Use an official Maven image with OpenJDK 21 as the base image
+FROM maven:3.9.4-eclipse-temurin-21 AS build
 
-# Set the working directory
 WORKDIR /app
-
-# Copy the pom.xml file into the working directory
-COPY wallet/pom.xml ./
-
-# Copy the src directory into the working directory
-COPY wallet/src ./src
-
-# Run Maven to build the project
+COPY pom.xml ./
+COPY src ./src
 RUN mvn clean package -DskipTests
 
-# Stage 2: Create the runtime image
 FROM openjdk:21-jdk-slim
 
-# Set the working directory in the runtime image
 WORKDIR /app
+COPY --from=build /app/target/*.jar app.jar
 
-# Copy the built jar from the builder stage
-COPY --from=builder /app/target/*.jar app.jar
-
-# Expose the port the application will run on
+# Ensure the credentials file is included in the JAR (src/main/resources is bundled by default)
 EXPOSE 8080
-
-# Run the application
-ENTRYPOINT ["java", "-jar", "/app/app.jar"]
+CMD ["java", "-jar", "app.jar"]

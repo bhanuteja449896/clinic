@@ -29,7 +29,6 @@ public class User {
     public void addTransactionToHistory(Transactions transaction) {
         this.history.add(transaction);
     }
-
     public String getId() {
         return id;
     }
