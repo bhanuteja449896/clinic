@@ -107,15 +107,20 @@ public class UserServices {
             response.setRc("01");
         }
         else{
+            transactionRepository.save(transactions);
             User user = userRepository.findByGmail(transactions.getGmail());
             user.addTransactionToHistory(transactions);
             userRepository.save(user);
-            transactionRepository.save(transactions);
             response.setDesc("Successfully Added");
             response.setRc("00");
         }
         return response;
     }
+
+//    public User searchUserByGmail(String gmail){
+//        User user = userRepository.findByGmail(gmail);
+//        return user;
+//    }
 
 
 }
