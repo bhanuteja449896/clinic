@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/blogs/")
+@CrossOrigin(origins = "*")
 public class BlogController {
 
     @Autowired
