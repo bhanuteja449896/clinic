@@ -88,10 +88,9 @@ public class AdminServices {
         return response;
     }
 
-//    public Transactions getTransactionById(String transactionId){
-//        Transactions transactions = transactionRepository.findByTransactionId(transactionId);
-//
-//    }
+    public Admin searchAdminByGmail(String gmail){
+        return adminRepository.findByGmail(gmail);
+    }
 
 
 }

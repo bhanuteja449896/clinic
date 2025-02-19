@@ -27,4 +27,20 @@ public class ServicesController {
         return servicesService.getAllServices();
     }
 
+    @GetMapping("{id}")
+    public Services findServicesById(@PathVariable("id") String id){
+        return servicesService.searchServiceById(id);
+    }
+
+    @DeleteMapping("delete-service/{id}")
+    public Response deleteServiceById(@PathVariable("id") String id){
+        return servicesService.deleteServiceById(id);
+    }
+
+    @PutMapping("modify-service/{id}")
+    public Response modifyService(@PathVariable("id") String id, @RequestBody Services updatedService) {
+        return servicesService.modifyService(id, updatedService);
+    }
+
+
 }

@@ -1,7 +1,10 @@
 package com.example.clinic.Controller;
 
 
+import com.example.clinic.Entity.Admin;
+import com.example.clinic.Entity.Contact;
 import com.example.clinic.Entity.Transactions;
+import com.example.clinic.Repository.ContactRepository;
 import com.example.clinic.Response.Response;
 import com.example.clinic.Services.AdminServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +18,9 @@ public class AdminController {
 
     @Autowired
     private AdminServices adminServices;
+
+    @Autowired
+    private ContactRepository contactRepository;
 
     @GetMapping("transactions/all")
     public List<Transactions> searchTransactions(){
@@ -31,6 +37,16 @@ public class AdminController {
     @PutMapping("transaction-update/{transactionId}/{status}")
     public Response updateTransactionUpdate(@PathVariable("transactionId") String transactionId , @PathVariable("status") String stauts){
         return adminServices.transactionStatusUpdate(transactionId,stauts);
+    }
+
+    @GetMapping("data/{gmail}")
+    public Admin adminDataByGmail(@PathVariable("gmail") String gmail){
+        return adminServices.searchAdminByGmail(gmail);
+    }
+
+    @GetMapping("contact/user-data")
+    public List<Contact> getAllContactMe(){
+        return contactRepository.findAll();
     }
 
 }
