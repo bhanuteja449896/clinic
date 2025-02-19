@@ -41,7 +41,7 @@ public class AdminController {
     }
 
     @GetMapping("data/{username}")
-    public Admin adminDataByGmail(@PathVariable("gmail") String username){
+    public Admin adminDataByGmail(@PathVariable("username") String username){
         return adminServices.searchAdminByUsername(username);
     }
 
