@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AdminRepository extends MongoRepository<Admin, String> {
     Admin findByUsername(String username);
-    Admin findByGmail(String gmail);
+//    Admin findByGmail(String gmail);
 }

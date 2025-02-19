@@ -40,9 +40,9 @@ public class AdminController {
         return adminServices.transactionStatusUpdate(transactionId,stauts);
     }
 
-    @GetMapping("data/{gmail}")
-    public Admin adminDataByGmail(@PathVariable("gmail") String gmail){
-        return adminServices.searchAdminByGmail(gmail);
+    @GetMapping("data/{username}")
+    public Admin adminDataByGmail(@PathVariable("gmail") String username){
+        return adminServices.searchAdminByUsername(username);
     }
 
     @GetMapping("contact/user-data")

@@ -88,8 +88,8 @@ public class AdminServices {
         return response;
     }
 
-    public Admin searchAdminByGmail(String gmail){
-        return adminRepository.findByGmail(gmail);
+    public Admin searchAdminByUsername(String username){
+        return adminRepository.findByUsername(username);
     }
 
 
