@@ -43,6 +43,7 @@ public class AdminController {
     @GetMapping("data/{username}")
     public Admin adminDataByGmail(@PathVariable("username") String username){
         return adminServices.searchAdminByUsername(username);
+        //hi
     }
 
     @GetMapping("contact/user-data")
