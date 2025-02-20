@@ -48,7 +48,7 @@ public class ServicesController {
     }
 
     @PostMapping("add/contact/user-data")
-    public Response addContactUserData(Contact contact){
+    public Response addContactUserData(@RequestBody Contact contact){
         Response response = new Response();
         contactRepository.save(contact);
         response.setDesc("Successfully added");
