@@ -43,6 +43,9 @@ public class UserController {
         return userServices.addNewTransaction(transactions);
     }
 
-//    @GetMapping("")
+    @PostMapping("reports/add/{gmail}")
+    public Response addUserReport(@PathVariable("gmail") String gmail, @RequestBody User.Report report){
+        return userServices.addNewReport(gmail, report);
+    }
 
 }

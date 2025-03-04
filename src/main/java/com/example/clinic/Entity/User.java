@@ -14,9 +14,47 @@ public class User {
     private String password;
     private String gmail;
     private List<Transactions> history;
-    private List<String> services;
+    private List<Report> reports;
     private String age;
     private String gender;
+
+    public static class Report {
+        private String date;
+        private String description;
+        private String medicines;
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public String getMedicines() {
+            return medicines;
+        }
+
+        public void setMedicines(String medicines) {
+            this.medicines = medicines;
+        }
+    }
+
+    public List<Report> getReports() {
+        return reports;
+    }
+
+    public void setReports(List<Report> reports) {
+        this.reports = reports;
+    }
 
     public List<Transactions> getHistory() {
         return history;
@@ -69,13 +107,6 @@ public class User {
         this.gmail = gmail;
     }
 
-    public List<String> getServices() {
-        return services;
-    }
-
-    public void setServices(List<String> services) {
-        this.services = services;
-    }
 
     public String getAge() {
         return age;

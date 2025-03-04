@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.SecureRandom;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -117,16 +118,28 @@ public class UserServices {
         return response;
     }
 
-//    public User searchUserByGmail(String gmail){
-//        User user = userRepository.findByGmail(gmail);
-//        return user;
-//    }
+    public Response addNewReport(String gmail, User.Report report) {
+        Response response = new Response();
+
+        // Step 1: Find the user by Gmail
+        User user = userRepository.findByGmail(gmail);
+
+        if (user == null) {
+            response.setDesc("User not found.");
+            response.setRc("01");
+            return response;
+        }
+        if (user.getReports() == null) {
+            user.setReports(new ArrayList<>());
+        }
+
+        user.getReports().add(report);
+        userRepository.save(user);
+
+        response.setDesc("Report added successfully.");
+        response.setRc("00");
+        return response;
+    }
 
 
 }
-
-
-
-//    public Response addUserNewService(String serviceId, String serviceStatus, String date,){
-//
-//    }
